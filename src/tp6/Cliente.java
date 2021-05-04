@@ -14,6 +14,13 @@ public class Cliente {
         this.ciudad = ciudad;
         this.dni = dni;
     }
+
+    public Cliente(String nombre, String apellido, String ciudad, long dni) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.ciudad = ciudad;
+        this.dni = dni;
+    }
     
     public String getCiudad() {
         return ciudad;
