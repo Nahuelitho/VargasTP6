@@ -19,8 +19,9 @@ public class formularioVista extends javax.swing.JInternalFrame {
     /**
      * Creates new form formularioVista
      */
-    public formularioVista() {
+    public formularioVista(Directorio directorio) {
         initComponents();
+        this.dr=directorio;
     }
 
     /**
@@ -165,16 +166,24 @@ public void limpiar(){
     jtfTelefono.setText("");
     }
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        /*jtfDni.getText();
-        jtfApellido.getText();
-        jtfNombre.getText();
-        jtfCiudad.getText();
-        jtfTelefono.getText();*/
-        Cliente cl = new Cliente(jtfDni.getText(),jtfApellido.getText(),jtfNombre.getText(),jtfCiudad.getText(),Long.parseLong(jtfTelefono.getText()));
-        if(cl!=null){
-        dr.agregarCliente(269, cl);
-        JOptionPane.showMessageDialog(null, "Cliente guardado con exito");
-        limpiar();}
+       try{
+        long dni = Long.parseLong(jtfDni.getText());
+        String ape=jtfApellido.getText();
+        String nom=jtfNombre.getText();
+        String ciu=jtfCiudad.getText();
+        Long tel=Long.parseLong(jtfTelefono.getText());
+        Cliente cl = new Cliente(nom,ape,ciu,dni);
+        dr.agregarCliente(tel, cl);
+        if((dr.agregarCliente(tel, cl))==null){
+        JOptionPane.showMessageDialog(this, "no se agrego");
+        }else{JOptionPane.showMessageDialog(this, "se agrego");};
+        limpiar();
+       }catch(NumberFormatException ex){
+       JOptionPane.showMessageDialog(this,"Error en el dni o telefono");}
+        
+        
+        
+        
     }//GEN-LAST:event_jbGuardarActionPerformed
 
 

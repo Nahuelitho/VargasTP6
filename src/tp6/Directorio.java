@@ -9,12 +9,12 @@ public class Directorio {
     private TreeMap<Long,Cliente> listaClientes = new TreeMap<>();
     
 /*****************************************************************/    
-    public void agregarCliente(long telefono, Cliente c){
+    public Cliente agregarCliente(long telefono, Cliente c){
     
     Cliente cliente = listaClientes.put(telefono, c);
     if(cliente !=null){
-        System.out.println("No se pudo agregar");
-    } else System.out.println("El cliente se agrego con exito");
+        return cliente;
+    } else return cliente;
     }
 //////////////////////////////////////////////////////////////
     public void buscarCliente(long telefono) {

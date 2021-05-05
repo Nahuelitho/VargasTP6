@@ -154,11 +154,12 @@ public class busquedaVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       jtfTelefono.getText();
-       dr.buscarCliente(jtfTelefono.getText());
-       jtfDni.setText(title);
-        jtfApellido.getText();
-        jtfNombre.getText();
+       Long tel=Long.parseLong(jtfTelefono.getText());
+       
+       //Cliente cl=new Cliente (dr.buscarCliente(tel));
+       //jtfDni.setText();
+       jtfApellido.getText();
+       jtfNombre.getText();
         jtfCiudad.getText();
         jtfTelefono.getText();
 // TODO add your handling code here:

@@ -1,7 +1,10 @@
 package vistas;
 
+import tp6.Directorio;
+
 
 public class menuVista extends javax.swing.JFrame {
+private Directorio directorio=new Directorio();
 
     
     public menuVista() {
@@ -15,12 +18,12 @@ public class menuVista extends javax.swing.JFrame {
 
         escritorio = new javax.swing.JDesktopPane();
         Salir = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jmBuscar = new javax.swing.JMenu();
         jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
-        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jmEditar = new javax.swing.JMenu();
+        jrbmAgregar = new javax.swing.JRadioButtonMenuItem();
+        jrbmBorrar = new javax.swing.JRadioButtonMenuItem();
+        jmSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,7 +38,7 @@ public class menuVista extends javax.swing.JFrame {
             .addGap(0, 713, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Buscar");
+        jmBuscar.setText("Buscar");
 
         jRadioButtonMenuItem3.setSelected(true);
         jRadioButtonMenuItem3.setText("Buscar Cliente");
@@ -44,39 +47,44 @@ public class menuVista extends javax.swing.JFrame {
                 jRadioButtonMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu1.add(jRadioButtonMenuItem3);
+        jmBuscar.add(jRadioButtonMenuItem3);
 
-        Salir.add(jMenu1);
+        Salir.add(jmBuscar);
 
-        jMenu2.setText("Editar");
-
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("Agregar Cliente");
-        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmEditar.setText("Editar");
+        jmEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItem1ActionPerformed(evt);
+                jmEditarActionPerformed(evt);
             }
         });
-        jMenu2.add(jRadioButtonMenuItem1);
 
-        jRadioButtonMenuItem2.setSelected(true);
-        jRadioButtonMenuItem2.setText("Borrar Cliente");
-        jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jrbmAgregar.setSelected(true);
+        jrbmAgregar.setText("Agregar Cliente");
+        jrbmAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItem2ActionPerformed(evt);
+                jrbmAgregarActionPerformed(evt);
             }
         });
-        jMenu2.add(jRadioButtonMenuItem2);
+        jmEditar.add(jrbmAgregar);
 
-        Salir.add(jMenu2);
-
-        jMenu3.setText("Salir");
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+        jrbmBorrar.setSelected(true);
+        jrbmBorrar.setText("Borrar Cliente");
+        jrbmBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
+                jrbmBorrarActionPerformed(evt);
             }
         });
-        Salir.add(jMenu3);
+        jmEditar.add(jrbmBorrar);
+
+        Salir.add(jmEditar);
+
+        jmSalir.setText("Salir");
+        jmSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSalirActionPerformed(evt);
+            }
+        });
+        Salir.add(jmSalir);
 
         setJMenuBar(Salir);
 
@@ -98,14 +106,14 @@ public class menuVista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
+    private void jrbmBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbmBorrarActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
         borrarVista Bv = new borrarVista();
         Bv.setVisible(true);
         escritorio.add(Bv);
         escritorio.moveToFront(Bv);//para mandar ventana al frente
-    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
+    }//GEN-LAST:event_jrbmBorrarActionPerformed
 
     private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
        escritorio.removeAll();
@@ -116,20 +124,24 @@ public class menuVista extends javax.swing.JFrame {
         escritorio.moveToFront(bv);//para mandar ventana al frente
     }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
 
-    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+    private void jrbmAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbmAgregarActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        formularioVista fv = new formularioVista();
+        formularioVista fv = new formularioVista(directorio);
         fv.setVisible(true);
         escritorio.add(fv);
         escritorio.moveToFront(fv);//para mandar ventana al frente
-    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+    }//GEN-LAST:event_jrbmAgregarActionPerformed
 
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
        dispose();
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu3ActionPerformed
+    }//GEN-LAST:event_jmSalirActionPerformed
+
+    private void jmEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,11 +182,11 @@ public class menuVista extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Salir;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
+    private javax.swing.JMenu jmBuscar;
+    private javax.swing.JMenu jmEditar;
+    private javax.swing.JMenu jmSalir;
+    private javax.swing.JRadioButtonMenuItem jrbmAgregar;
+    private javax.swing.JRadioButtonMenuItem jrbmBorrar;
     // End of variables declaration//GEN-END:variables
 }
