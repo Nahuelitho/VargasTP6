@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeMap;
+import javax.swing.JOptionPane;
 
 public class Directorio {
     private TreeMap<Long,Cliente> listaClientes = new TreeMap<>();
@@ -17,13 +18,18 @@ public class Directorio {
     } else return cliente;
     }
 //////////////////////////////////////////////////////////////
-    public void buscarCliente(long telefono) {
-
+    public Cliente buscarCliente(long telefono) {
+        Cliente cl = new Cliente();
         Set<Long> claves = listaClientes.keySet();
         //Pensaba hacer un for pero recorde que un telefono solo puede pertenecer a una persona
         if (listaClientes.containsKey(telefono)) {
-            System.out.println("El Dueño de este telefono es: " + listaClientes.get(telefono).getNombre() + " " + listaClientes.get(telefono).getApellido());
+            cl.setNombre(listaClientes.get(telefono).getNombre());
+            cl.setApellido(listaClientes.get(telefono).getApellido());
+            cl.setCiudad(listaClientes.get(telefono).getCiudad());
+            cl.setDni(listaClientes.get(telefono).getDni());
+      
         }else System.out.println("El cliente no se encontro");
+        return cl;
     }
     
 //////////////////////////////////////////////////////////////    
@@ -69,7 +75,7 @@ public class Directorio {
     
     if(listaClientes.get(Ntelefono).getDni()==dni){
     it.remove();
-    System.out.println("Se borro el cliente con dni: "+dni);
+    JOptionPane.showMessageDialog(null, "Cliente borrado con exito");
     }  
         }   
     }

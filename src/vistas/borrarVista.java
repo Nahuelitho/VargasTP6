@@ -5,15 +5,17 @@
  */
 package vistas;
 
+import tp6.Directorio;
+
 /**
  *
  * @author Nahu
  */
 public class borrarVista extends javax.swing.JInternalFrame {
-
+    Directorio dr = new Directorio();
     /**
      * Creates new form borrarVista
-     */
+     */ 
     public borrarVista() {
         initComponents();
     }
@@ -38,9 +40,9 @@ public class borrarVista extends javax.swing.JInternalFrame {
         jtfApellido = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
         jtfCiudad = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
+        jbBorrar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 158, 208));
@@ -84,17 +86,27 @@ public class borrarVista extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setForeground(new java.awt.Color(0, 158, 208));
-        jButton1.setText("SALIR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbSalir.setForeground(new java.awt.Color(0, 158, 208));
+        jbSalir.setText("SALIR");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbSalirActionPerformed(evt);
             }
         });
 
-        jButton2.setText("BUSCAR");
+        jbBuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nahu\\Desktop\\Lupa.png")); // NOI18N
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("jButton3");
+        jbBorrar.setText("Borrar");
+        jbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,7 +120,7 @@ public class borrarVista extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(157, 157, 157)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addComponent(jbSalir)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel6)
@@ -132,8 +144,8 @@ public class borrarVista extends javax.swing.JInternalFrame {
                                         .addComponent(jtfDni)))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jbBuscar)
+                            .addComponent(jbBorrar, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -145,12 +157,12 @@ public class borrarVista extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(jbBuscar))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(jbBorrar))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -163,8 +175,8 @@ public class borrarVista extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jtfCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbSalir)
                 .addGap(27, 27, 27))
         );
 
@@ -183,22 +195,38 @@ public class borrarVista extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfTelefonoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         dispose();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        Long tel=Long.parseLong(jtfTelefono.getText());
+       
+       jtfDni.setText(""+dr.buscarCliente(tel).getDni());
+       jtfApellido.setText(dr.buscarCliente(tel).getApellido());
+       jtfNombre.setText(dr.buscarCliente(tel).getNombre());
+       jtfCiudad.setText(dr.buscarCliente(tel).getCiudad());
+       dr.borrarCliente(Long.parseLong(jtfDni.getText()));
+       
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        Long tel=Long.parseLong(jtfTelefono.getText());
+        dr.borrarCliente(dr.buscarCliente(tel).getDni());
+    }//GEN-LAST:event_jbBorrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton jbBorrar;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JTextField jtfApellido;
     private javax.swing.JTextField jtfCiudad;
     private javax.swing.JTextField jtfDni;

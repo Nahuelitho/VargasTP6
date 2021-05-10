@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import javax.swing.JOptionPane;
 import tp6.Cliente;
 import tp6.Directorio;
 
@@ -41,7 +42,7 @@ public class busquedaVista extends javax.swing.JInternalFrame {
         jtfDni = new javax.swing.JTextField();
         jtfCiudad = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
@@ -65,10 +66,10 @@ public class busquedaVista extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(0, 158, 208));
         jLabel5.setText("NOMBRE:");
 
-        jButton1.setText("BUSCAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbBuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nahu\\Desktop\\Lupa.png")); // NOI18N
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbBuscarActionPerformed(evt);
             }
         });
 
@@ -105,13 +106,13 @@ public class busquedaVista extends javax.swing.JInternalFrame {
                             .addComponent(jtfCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(64, 64, 64)
-                        .addComponent(jButton1))
+                        .addComponent(jbBuscar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton2)
                             .addComponent(jLabel6))))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +123,7 @@ public class busquedaVista extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jbBuscar))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -141,7 +142,7 @@ public class busquedaVista extends javax.swing.JInternalFrame {
                     .addComponent(jtfCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addComponent(jButton2)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,21 +154,23 @@ public class busquedaVista extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Long tel=Long.parseLong(jtfTelefono.getText());
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+       Long tel=Long.parseLong(jtfTelefono.getText()); 
        
-       //Cliente cl=new Cliente (dr.buscarCliente(tel));
-       //jtfDni.setText();
-       jtfApellido.getText();
-       jtfNombre.getText();
-        jtfCiudad.getText();
-        jtfTelefono.getText();
+       jtfDni.setText(""+dr.buscarCliente(tel).getDni());
+       jtfApellido.setText(dr.buscarCliente(tel).getApellido());
+       jtfNombre.setText(dr.buscarCliente(tel).getNombre());
+       jtfCiudad.setText(dr.buscarCliente(tel).getCiudad());
+       /*
+       jtfCiudad.setText(dr.buscarCliente(tel).getCiudad());*/
+       JOptionPane.showMessageDialog(null,"Cliente encontrado con exito");
+       
+      
 // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -175,6 +178,7 @@ public class busquedaVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton jbBuscar;
     private javax.swing.JTextField jtfApellido;
     private javax.swing.JTextField jtfCiudad;
     private javax.swing.JTextField jtfDni;

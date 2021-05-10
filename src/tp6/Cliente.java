@@ -21,6 +21,9 @@ public class Cliente {
         this.ciudad = ciudad;
         this.dni = dni;
     }
+
+    public Cliente() {
+    }
     
     public String getCiudad() {
         return ciudad;
@@ -64,7 +67,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return  nombre +" "+ apellido + " " + ciudad ;
+        return "Nombre: "+  nombre +" Apellido: "+ apellido + " Ciudad: " + ciudad +" DNI: "+dni;
     }
     
     
